@@ -23,9 +23,13 @@ export const BreakLength: React.FunctionComponent<Props> = props => {
         <h1>Break Length</h1>
       </header>
       <div className="BreakLength-content">
-        <button onClick={props.increment}>Up</button>
-        <p>{props.value}</p>
-        <button onClick={props.decrement}>Down</button>
+        <button id="break-increment" onClick={props.increment}>
+          Up
+        </button>
+        <p id="break-length">{props.value}</p>
+        <button id="break-decrement" onClick={props.decrement}>
+          Down
+        </button>
       </div>
     </div>
   );
