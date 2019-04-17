@@ -3,6 +3,7 @@ import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import App from './App';
 import BreakLength from '../BreakLength/BreakLength';
+import SessionLength from '../SessionLength/SessionLength';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -27,5 +28,6 @@ describe('components', () => {
     const content = enzymeWrapper.find('div.App-content');
     expect(content).toHaveLength(1);
     expect(content.find(BreakLength)).toHaveLength(1);
+    expect(content.find(SessionLength)).toHaveLength(1);
   });
 });

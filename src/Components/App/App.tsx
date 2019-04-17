@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import BreakLength from '../BreakLength/BreakLength';
+import SessionLength from '../SessionLength/SessionLength';
 
 class App extends React.Component {
   render() {
@@ -11,6 +12,7 @@ class App extends React.Component {
         </header>
         <div className="App-content">
           <BreakLength />
+          <SessionLength />
         </div>
       </div>
     );
