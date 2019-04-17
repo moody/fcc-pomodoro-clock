@@ -1,8 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
-import { ApplicationState } from '../../State';
-import { increment, decrement } from '../../State/SessionLength/actions';
+import {
+  incrementSessionLength,
+  decrementSessionLength
+} from '../../State/actions';
+import { State } from '../../State/types';
 import './SessionLength.scss';
 
 interface StateToProps {
@@ -35,12 +38,15 @@ export const SessionLength: React.FunctionComponent<Props> = props => {
   );
 };
 
-const mapStateToProps = (state: ApplicationState): StateToProps => ({
-  value: state.sessionLength.value
+const mapStateToProps = (state: State): StateToProps => ({
+  value: state.sessionLength
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchToProps =>
-  bindActionCreators({ increment, decrement }, dispatch);
+  bindActionCreators(
+    { increment: incrementSessionLength, decrement: decrementSessionLength },
+    dispatch
+  );
 
 export default connect(
   mapStateToProps,

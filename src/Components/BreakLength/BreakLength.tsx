@@ -1,8 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
-import { ApplicationState } from '../../State';
-import { increment, decrement } from '../../State/BreakLength/actions';
+import {
+  incrementBreakLength,
+  decrementBreakLength
+} from '../../State/actions';
+import { State } from '../../State/types';
 import './BreakLength.scss';
 
 interface StateToProps {
@@ -35,12 +38,15 @@ export const BreakLength: React.FunctionComponent<Props> = props => {
   );
 };
 
-const mapStateToProps = (state: ApplicationState): StateToProps => ({
-  value: state.breakLength.value
+const mapStateToProps = (state: State): StateToProps => ({
+  value: state.breakLength
 });
 
 const mapDispatchToProps = (dispatch: Dispatch): DispatchToProps =>
-  bindActionCreators({ increment, decrement }, dispatch);
+  bindActionCreators(
+    { increment: incrementBreakLength, decrement: decrementBreakLength },
+    dispatch
+  );
 
 export default connect(
   mapStateToProps,
