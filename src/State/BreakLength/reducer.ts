@@ -1,9 +1,13 @@
 import { State, Actions } from './types';
 import { Reducer } from 'redux';
-import { BREAK_LENGTH_MAX, BREAK_LENGTH_MIN } from '../../constants';
+import {
+  BREAK_LENGTH_MAX,
+  BREAK_LENGTH_MIN,
+  BREAK_LENGTH_DEFAULT
+} from '../../constants';
 
 export const initialState: State = {
-  value: 5
+  value: BREAK_LENGTH_DEFAULT
 };
 
 const reducer: Reducer<State, Actions> = (
