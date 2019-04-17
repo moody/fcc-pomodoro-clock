@@ -20,7 +20,7 @@ export const SessionLength: React.FunctionComponent<Props> = props => {
   return (
     <div className="SessionLength">
       <header id="session-label">
-        <h1>Break Length</h1>
+        <h1>Session Length</h1>
       </header>
       <div className="SessionLength-content">
         <button id="session-increment" onClick={props.increment}>

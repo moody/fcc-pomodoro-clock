@@ -25,7 +25,7 @@ describe('components', () => {
   test('header', () => {
     const { enzymeWrapper } = setup();
     expect(enzymeWrapper.find('#session-label')).toHaveLength(1);
-    expect(enzymeWrapper.find('h1').text()).toBe('Break Length');
+    expect(enzymeWrapper.find('h1').text()).toBe('Session Length');
   });
 
   test('content', () => {

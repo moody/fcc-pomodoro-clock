@@ -2,12 +2,13 @@ import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { BreakLength } from './BreakLength';
+import { BREAK_LENGTH_DEFAULT } from '../../constants';
 
 Enzyme.configure({ adapter: new Adapter() });
 
 const setup = () => {
   const props = {
-    value: 5,
+    value: BREAK_LENGTH_DEFAULT,
     increment: jest.fn(),
     decrement: jest.fn()
   };
