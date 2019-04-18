@@ -2,6 +2,7 @@ import reducer, { initialState } from './reducer';
 import * as actions from './actions';
 import * as types from './types';
 import * as Consts from '../constants';
+import { minutesToSeconds } from '../utils';
 
 const getInitialState = (): types.State => ({ ...initialState });
 
@@ -12,57 +13,119 @@ test('returns initial state', () => {
 
 describe('breakLength', () => {
   test('reduces increment', () => {
-    let expected = getInitialState();
-    expected.breakLength++;
-    expect(reducer(undefined, actions.incrementBreakLength())).toEqual(
-      expected
-    );
-
-    // Clamps to max value
-    for (let i = 0; i < Consts.BREAK_LENGTH_MAX; i++)
-      expected = reducer(expected, actions.incrementBreakLength());
-    expect(expected.breakLength).toEqual(Consts.BREAK_LENGTH_MAX);
+    expect(
+      reducer(
+        { ...initialState, breakLength: 15 },
+        actions.incrementBreakLength()
+      ).breakLength
+    ).toBe(16);
+    expect(
+      reducer(
+        { ...initialState, breakLength: Consts.BREAK_LENGTH_MAX },
+        actions.incrementBreakLength()
+      ).breakLength
+    ).toBe(Consts.BREAK_LENGTH_MAX);
   });
 
   test('reduces decrement', () => {
-    let expected = getInitialState();
-    expected.breakLength--;
-    expect(reducer(undefined, actions.decrementBreakLength())).toEqual(
-      expected
-    );
+    expect(
+      reducer(
+        { ...initialState, breakLength: 2 },
+        actions.decrementBreakLength()
+      ).breakLength
+    ).toBe(1);
+    expect(
+      reducer(
+        { ...initialState, breakLength: Consts.BREAK_LENGTH_MIN },
+        actions.decrementBreakLength()
+      ).breakLength
+    ).toBe(Consts.BREAK_LENGTH_MIN);
+  });
 
-    // Clamps to min value
-    for (let i = 0; i < Consts.BREAK_LENGTH_MAX; i++)
-      expected = reducer(expected, actions.decrementBreakLength());
-    expect(expected.breakLength).toEqual(Consts.BREAK_LENGTH_MIN);
+  test('updates currentTime if isBreak', () => {
+    expect(
+      reducer(
+        { ...initialState, isBreak: true, breakLength: 1 },
+        actions.incrementBreakLength()
+      ).currentTime
+    ).toBe(120);
+    expect(
+      reducer(
+        { ...initialState, isBreak: true, breakLength: 2 },
+        actions.decrementBreakLength()
+      ).currentTime
+    ).toBe(60);
+    expect(
+      reducer(
+        { ...initialState, isBreak: false, currentTime: -1 },
+        actions.incrementBreakLength()
+      ).currentTime
+    ).toBe(-1);
+    expect(
+      reducer(
+        { ...initialState, isBreak: false, currentTime: -1 },
+        actions.decrementBreakLength()
+      ).currentTime
+    ).toBe(-1);
   });
 });
 
 describe('sessionLength', () => {
   test('reduces increment', () => {
-    let expected = getInitialState();
-    expected.sessionLength++;
-    expect(reducer(undefined, actions.incrementSessionLength())).toEqual(
-      expected
-    );
-
-    // Clamps to max value
-    for (let i = 0; i < Consts.SESSION_LENGTH_MAX; i++)
-      expected = reducer(expected, actions.incrementSessionLength());
-    expect(expected.sessionLength).toEqual(Consts.SESSION_LENGTH_MAX);
+    expect(
+      reducer(
+        { ...initialState, sessionLength: 15 },
+        actions.incrementSessionLength()
+      ).sessionLength
+    ).toBe(16);
+    expect(
+      reducer(
+        { ...initialState, sessionLength: Consts.SESSION_LENGTH_MAX },
+        actions.incrementSessionLength()
+      ).sessionLength
+    ).toBe(Consts.SESSION_LENGTH_MAX);
   });
 
   test('reduces decrement', () => {
-    let expected = getInitialState();
-    expected.sessionLength--;
-    expect(reducer(undefined, actions.decrementSessionLength())).toEqual(
-      expected
-    );
+    expect(
+      reducer(
+        { ...initialState, sessionLength: 2 },
+        actions.decrementSessionLength()
+      ).sessionLength
+    ).toBe(1);
+    expect(
+      reducer(
+        { ...initialState, sessionLength: Consts.SESSION_LENGTH_MIN },
+        actions.decrementSessionLength()
+      ).sessionLength
+    ).toBe(Consts.SESSION_LENGTH_MIN);
+  });
 
-    // Clamps to min value
-    for (let i = 0; i < Consts.SESSION_LENGTH_MAX; i++)
-      expected = reducer(expected, actions.decrementSessionLength());
-    expect(expected.sessionLength).toEqual(Consts.SESSION_LENGTH_MIN);
+  test('updates currentTime if not isBreak', () => {
+    expect(
+      reducer(
+        { ...initialState, isBreak: false, sessionLength: 1 },
+        actions.incrementSessionLength()
+      ).currentTime
+    ).toBe(120);
+    expect(
+      reducer(
+        { ...initialState, isBreak: false, sessionLength: 2 },
+        actions.decrementSessionLength()
+      ).currentTime
+    ).toBe(60);
+    expect(
+      reducer(
+        { ...initialState, isBreak: true, currentTime: -1 },
+        actions.incrementSessionLength()
+      ).currentTime
+    ).toBe(-1);
+    expect(
+      reducer(
+        { ...initialState, isBreak: true, currentTime: -1 },
+        actions.decrementSessionLength()
+      ).currentTime
+    ).toBe(-1);
   });
 });
 
