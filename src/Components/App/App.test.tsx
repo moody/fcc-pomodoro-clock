@@ -2,8 +2,7 @@ import React from 'react';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import App from './App';
-import BreakLength from '../BreakLength/BreakLength';
-import SessionLength from '../SessionLength/SessionLength';
+import Counter from '../Counter/Counter';
 import Timer from '../Timer/Timer';
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -30,8 +29,7 @@ describe('components', () => {
     expect(content).toHaveLength(1);
 
     const counters = content.find('div.App-counters');
-    expect(counters.find(BreakLength)).toHaveLength(1);
-    expect(counters.find(SessionLength)).toHaveLength(1);
+    expect(counters.find(Counter)).toHaveLength(2);
 
     const timer = content.find('div.App-timer');
     expect(timer.find(Timer)).toHaveLength(1);
