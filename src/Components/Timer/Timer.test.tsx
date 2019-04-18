@@ -48,6 +48,9 @@ describe('components', () => {
     // time text
     expect(content.find('#time-left').text()).toBe(props.sessionLength + ':00');
 
+    // audio
+    expect(content.find('audio#beep')).toHaveLength(1);
+
     // controls
     const controls = content.find('div.Timer-controls');
     expect(controls).toHaveLength(1);
