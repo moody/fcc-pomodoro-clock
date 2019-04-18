@@ -2,7 +2,7 @@ import React from 'react';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 import { initialState } from '../../State/reducer';
-import { Timer, Props } from './Timer';
+import { Timer } from './Timer';
 
 Enzyme.configure({ adapter: new Adapter() });
 

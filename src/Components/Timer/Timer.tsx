@@ -3,8 +3,8 @@ import { Dispatch, bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { setCurrentTime, setIsBreak, toggle, reset } from '../../State/actions';
 import { State } from '../../State/types';
-import './Timer.scss';
 import { formatSeconds } from '../../utils';
+import './Timer.scss';
 
 interface StateToProps {
   breakLength: number;
@@ -21,7 +21,7 @@ interface DispatchToProps {
   reset(): void;
 }
 
-export type Props = StateToProps & DispatchToProps;
+type Props = StateToProps & DispatchToProps;
 
 export const Timer: React.FunctionComponent<Props> = props => {
   const currentTime = formatSeconds(props.currentTime);
