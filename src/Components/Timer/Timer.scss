@@ -1,0 +1,56 @@
+@import '../../shared.scss';
+
+.Timer {
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid black;
+}
+
+.Timer-header {
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid black;
+  padding: 5px;
+
+  h2 {
+    opacity: 0.92;
+  }
+}
+
+.Timer-content {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 10px;
+
+  p {
+    font-family: $monospace;
+    font-size: 3.5em;
+    margin-bottom: 10px;
+  }
+}
+
+.Timer-controls {
+  align-self: center;
+
+  button {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    margin: auto;
+    opacity: 0.6;
+    outline: none;
+    transition: all 250ms;
+
+    &:hover {
+      transform: scale(1.15);
+      opacity: 0.85;
+    }
+
+    &:active {
+      opacity: 1;
+    }
+
+    &:last-child {
+      margin-left: 20px;
+    }
+  }
+}

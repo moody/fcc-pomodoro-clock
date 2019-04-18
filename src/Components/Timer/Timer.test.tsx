@@ -30,13 +30,13 @@ describe('components', () => {
     test('during session', () => {
       const { enzymeWrapper } = setup();
       expect(enzymeWrapper.find('#timer-label')).toHaveLength(1);
-      expect(enzymeWrapper.find('h1').text()).toBe('Session');
+      expect(enzymeWrapper.find('h2').text()).toBe('Session');
     });
 
     test('during break', () => {
       const { enzymeWrapper } = setup({ isBreak: true });
       expect(enzymeWrapper.find('#timer-label')).toHaveLength(1);
-      expect(enzymeWrapper.find('h1').text()).toBe('Break');
+      expect(enzymeWrapper.find('h2').text()).toBe('Break');
     });
   });
 

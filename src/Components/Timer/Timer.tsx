@@ -84,13 +84,16 @@ export class Timer extends React.Component<Props> {
   }
 
   render() {
-    const { isBreak, currentTime } = this.props;
+    const { isBreak, currentTime, isRunning } = this.props;
     const timeLeft = formatSeconds(currentTime);
+    const playClass = isRunning
+      ? 'fas fa-pause-circle fa-3x'
+      : 'fas fa-play-circle fa-3x';
 
     return (
       <div className="Timer">
         <header className="Timer-header">
-          <h1 id="timer-label">{isBreak ? 'Break' : 'Session'}</h1>
+          <h2 id="timer-label">{isBreak ? 'Break' : 'Session'}</h2>
         </header>
 
         <div className="Timer-content">
@@ -104,10 +107,10 @@ export class Timer extends React.Component<Props> {
 
           <div className="Timer-controls">
             <button id="start_stop" onClick={this.toggle}>
-              Toggle
+              <i className={playClass} />
             </button>
             <button id="reset" onClick={this.reset}>
-              Reset
+              <i className="fas fa-stop-circle fa-3x" />
             </button>
           </div>
         </div>
