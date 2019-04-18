@@ -28,8 +28,8 @@ type Props = StateToProps & DispatchToProps;
 
 export const Counter: React.FunctionComponent<Props> = props => (
   <div className="Counter">
-    <header id={`${props.id}-label`}>
-      <h1>{`${props.id} Length`}</h1>
+    <header id={`${props.id}-label`} className="Counter-header">
+      <h2>{`${props.id} Length`}</h2>
     </header>
     <div className="Counter-content">
       <button
@@ -38,16 +38,18 @@ export const Counter: React.FunctionComponent<Props> = props => (
           if (!props.isRunning) props.increment();
         }}
       >
-        Up
+        <i className="fas fa-chevron-circle-up fa-3x" />
       </button>
+
       <p id={`${props.id}-length`}>{props.value}</p>
+
       <button
         id={`${props.id}-decrement`}
         onClick={() => {
           if (!props.isRunning) props.decrement();
         }}
       >
-        Down
+        <i className="fas fa-chevron-circle-down fa-3x" />
       </button>
     </div>
   </div>

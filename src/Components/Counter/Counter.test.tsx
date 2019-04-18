@@ -28,7 +28,7 @@ describe('components', () => {
     expect(enzymeWrapper.find(`#${props.id}-label`)).toHaveLength(1);
     expect(
       enzymeWrapper
-        .find('h1')
+        .find('h2')
         .text()
         .toLowerCase()
     ).toBe(props.id + ' length');
