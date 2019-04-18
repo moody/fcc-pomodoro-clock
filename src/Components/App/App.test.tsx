@@ -4,6 +4,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import App from './App';
 import BreakLength from '../BreakLength/BreakLength';
 import SessionLength from '../SessionLength/SessionLength';
+import Timer from '../Timer/Timer';
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -27,7 +28,20 @@ describe('components', () => {
     const { enzymeWrapper } = setup();
     const content = enzymeWrapper.find('div.App-content');
     expect(content).toHaveLength(1);
-    expect(content.find(BreakLength)).toHaveLength(1);
-    expect(content.find(SessionLength)).toHaveLength(1);
+
+    const counters = content.find('div.App-counters');
+    expect(counters.find(BreakLength)).toHaveLength(1);
+    expect(counters.find(SessionLength)).toHaveLength(1);
+
+    const timer = content.find('div.App-timer');
+    expect(timer.find(Timer)).toHaveLength(1);
+  });
+
+  test('footer', () => {
+    const { enzymeWrapper } = setup();
+    const footer = enzymeWrapper.find('footer');
+    expect(footer).toHaveLength(1);
+    expect(footer.hasClass('App-footer')).toBe(true);
+    expect(footer.find('p').text()).toBe('Coded by Justin Moody');
   });
 });
