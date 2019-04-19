@@ -1,7 +1,7 @@
 @import '../../shared.scss';
 
 .Counter {
-  border: 1px solid black;
+  border: $border;
   background: rgba(0, 0, 0, 0.1);
 
   min-width: 300px;
@@ -13,7 +13,7 @@
 
 .Counter-header {
   background: rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid black;
+  border-bottom: $border;
   padding: 5px 15px;
 
   h2 {
@@ -32,22 +32,6 @@
   }
 
   button {
-    background: none;
-    border: none;
-    color: inherit;
-    cursor: pointer;
-    margin: auto;
-    opacity: 0.6;
-    outline: none;
-    transition: all 250ms;
-
-    &:hover {
-      transform: scale(1.15);
-      opacity: 0.85;
-    }
-
-    &:active {
-      opacity: 1;
-    }
+    @extend %button-shared;
   }
 }

@@ -2,12 +2,13 @@
 
 .Timer {
   background: rgba(0, 0, 0, 0.1);
-  border: 1px solid black;
+  border: $border;
 }
 
 .Timer-header {
   background: rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid black;
+  border-bottom: $border;
+  font-size: 1.5em;
   padding: 5px;
 
   h2 {
@@ -18,7 +19,10 @@
 .Timer-content {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
+
   padding: 10px;
+  min-height: 150px;
 
   p {
     font-family: $monospace;
@@ -28,26 +32,8 @@
 }
 
 .Timer-controls {
-  align-self: center;
-
   button {
-    background: none;
-    border: none;
-    color: inherit;
-    cursor: pointer;
-    margin: auto;
-    opacity: 0.6;
-    outline: none;
-    transition: all 250ms;
-
-    &:hover {
-      transform: scale(1.15);
-      opacity: 0.85;
-    }
-
-    &:active {
-      opacity: 1;
-    }
+    @extend %button-shared;
 
     &:last-child {
       margin-left: 20px;

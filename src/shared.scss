@@ -4,3 +4,25 @@
 $title-font: 'Merienda One', 'Roboto', sans-serif;
 $body-font: 'Roboto', sans-serif;
 $monospace: 'Inconsolata', monospace;
+
+$border: 1px solid black;
+
+%button-shared {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  margin: auto;
+  opacity: 0.6;
+  outline: none;
+  transition: all 250ms;
+
+  &:hover {
+    transform: scale(1.15);
+    opacity: 0.85;
+  }
+
+  &:active {
+    opacity: 1;
+  }
+}
